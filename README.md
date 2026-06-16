@@ -1,0 +1,8 @@
+# Predictive Feature Caching for Training-free Acceleration of Molecular Geometry Generation
+[![arXiv](https://img.shields.io/badge/arXiv-2510.04646-b31b1b.svg)](https://arxiv.org/abs/2510.04646)
+[![OpenReview](https://img.shields.io/badge/OpenReview-Forum-blue)](https://openreview.net/forum?id=NaLVutCHCI)
+[![YouTube](https://img.shields.io/badge/YouTube-Video-red)]()
+
+Flow matching models generate high-fidelity molecular geometries but incur significant computational costs during inference, requiring hundreds of neural network evaluations. This inference cost becomes the primary bottleneck when such models are employed in practice to sample large numbers of molecular candidates. This work presents a training-free caching strategy that accelerates molecular geometry generation by predicting intermediate hidden states across solver steps. This caching scheme operates directly on the SE(3)-equivariant backbone, is compatible with pretrained models, and is orthogonal to existing training-based accelerations and system-level optimizations. Experiments on molecular geometry generation demonstrate that caching achieves a twofold reduction in wall-clock inference time at matched sample quality and a speedup of up to 3× with minimal sample quality degradation. Because these gains compound with other optimizations, applying caching alongside other general, lossless optimizations yield as much as a 7× speedup.
+
+We will publish the code to reproduce the paper results in this repository as soon as possible.
