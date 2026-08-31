@@ -1,0 +1,45 @@
+name: mol-cache
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - numpy=1.26.*
+  - scipy=1.14.*
+  - pandas=2.2.*
+  - pyyaml
+  - tqdm
+  - rdkit=2024.09.*
+  - openbabel=3.1.1
+  - lightning=2.5.*
+  - torchmetrics=1.7.*
+  # FLOWR / SBDD sampling imports (pinned for MDAnalysis.RDKit API compatibility)
+  - mdanalysis=2.7.0
+  - openmm
+  - pdbfixer
+  - pip:
+      - -e .
+      - --extra-index-url https://download.pytorch.org/whl/cu126
+      - torch==2.7.1+cu126
+      - torchvision==0.22.1+cu126
+      - torchaudio==2.7.1+cu126
+      - hydra-core==1.3.2
+      - omegaconf==2.3.0
+      - einops==0.8.1
+      - tensordict==0.7.2
+      - lmdb==1.5.1
+      - rootutils==1.0.7
+      - pruna==0.3.4
+      - biotite==1.0.1
+      - datamol==0.12.5
+      - posebusters==0.3.1
+      - posecheck==1.3.1
+      - biopandas
+      - prolif==2.0.3
+      - pdbinf
+      - torch_geometric
+      - "setuptools<81"
+# Note: conda may otherwise resolve a CPU-only torch build. Prefer the cu126 wheels above.

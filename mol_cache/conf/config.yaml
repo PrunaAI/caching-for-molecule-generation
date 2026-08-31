@@ -1,0 +1,37 @@
+# @package _global_
+defaults:
+  - model: semlaflow
+  - _self_
+
+seed: 42
+
+caching:
+  cache_interval: 1
+  cache_mode: taylor
+  cache_order: 2
+  cache_start_step: 0
+  cache_end_step: -1
+
+hardware:
+  device: 0
+  num_workers: 0
+
+paths:
+  output_dir: outputs
+
+sampling:
+  n_samples: 100
+  max_systems: 10
+  num_steps: 50
+  integration_steps: 100
+  batch_cost: null
+  max_batch_size: 100
+  dataset_split: test
+
+# Hydra is used only for composition; do not chdir.
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

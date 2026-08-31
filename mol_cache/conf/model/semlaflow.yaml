@@ -1,0 +1,16 @@
+# @package _global_
+route:
+  model: semlaflow
+  dataset: geom
+
+model:
+  _target_: semlaflow.mol_cache_sampler.SemlaFlowModel
+  dataset: geom
+  integration_steps: ${sampling.integration_steps}
+  ode_sampling_strategy: log
+  solver: euler
+  dpm_solver_order: 2
+  dpm_flow_shift: 1.0
+  cat_sampling_noise_level: 1
+  batch_cost: 8192
+  bucket_cost_scale: linear

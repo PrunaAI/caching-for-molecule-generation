@@ -1,0 +1,34 @@
+# @package _global_
+route:
+  model: flowr
+  dataset: spindr
+
+model:
+  _target_: flowr_model.gen.mol_cache_sampler.FlowrModel
+  dataset: spindr
+  arch: pocket
+  pocket_noise: fix
+  integration_steps: ${sampling.integration_steps}
+  ode_sampling_strategy: linear
+  categorical_strategy: uniform-sample
+  coord_noise_std: 0.0
+  cat_sampling_noise_level: 1
+  bucket_cost_scale: quadratic
+  corrector_iters: 0
+  max_sample_iter: 20
+  sample_mol_sizes: true
+  filter_valid_unique: false
+  batch_cost: 100
+  max_systems: ${sampling.max_systems}
+  dataset_split: ${sampling.dataset_split}
+  interaction_inpainting: false
+  scaffold_inpainting: false
+  func_group_inpainting: false
+  linker_inpainting: false
+  use_equi_ot: false
+  separate_pocket_interpolation: false
+  separate_interaction_interpolation: false
+  ligand_time: null
+  pocket_time: null
+  interaction_time: null
+  resampling_steps: null

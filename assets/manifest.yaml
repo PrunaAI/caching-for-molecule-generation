@@ -1,0 +1,94 @@
+# Asset path manifest for the supported model–dataset routes.
+#
+# Consumed by mol_cache/assets/__init__.py:
+#   - root_dir            download root, relative to the repository root
+#   - routes[]            the supported (model, dataset) matrix
+#   - routes[].assets[]   keys into the `assets` mapping below
+#   - assets[].kind       "checkpoint" or "dataset"; checkpoint_path() and
+#                         data_path() resolve the first entry of each kind
+#   - assets[].files[]    `local` paths beneath root_dir; data_path() returns
+#                         the parent directory of the first file
+#
+# Presence-only validation (no checksums): `mol-cache assets validate`.
+# Download instructions and upstream sources: see assets/README.md.
+# FLOWR x CrossDocked is intentionally absent (no pretrained checkpoint).
+
+root_dir: assets/download
+
+routes:
+  - model: semlaflow
+    dataset: geom
+    assets:
+      - semlaflow_geom_checkpoint
+      - semlaflow_geom_data
+
+  - model: tabasco
+    dataset: geom
+    assets:
+      - tabasco_geom_checkpoint
+      - tabasco_geom_data
+
+  - model: flowr
+    dataset: spindr
+    assets:
+      - flowr_spindr_checkpoint
+      - flowr_spindr_data
+
+  # FLOWR.root reuses the FLOWR SPINDR splits (see assets/README.md).
+  - model: flowr_root
+    dataset: spindr
+    assets:
+      - flowr_root_checkpoint
+      - flowr_spindr_data
+
+  - model: flowr_root
+    dataset: crossdocked
+    assets:
+      - flowr_root_checkpoint
+      - flowr_root_crossdocked_data
+
+assets:
+  semlaflow_geom_checkpoint:
+    kind: checkpoint
+    files:
+      - local: checkpoints/semlaflow/geom/200epochs.ckpt
+
+  semlaflow_geom_data:
+    kind: dataset
+    files:
+      - local: data/semlaflow/geom/test.smol
+      - local: data/semlaflow/geom/train.smiles
+
+  tabasco_geom_checkpoint:
+    kind: checkpoint
+    files:
+      - local: checkpoints/tabasco/geom/tabasco-geom-hot.ckpt
+
+  tabasco_geom_data:
+    kind: dataset
+    files:
+      - local: data/tabasco/geom/processed_geom_test.pt
+      - local: data/tabasco/geom/processed_geom_train.pt
+      - local: data/tabasco/geom/processed_geom_val.pt
+
+  flowr_spindr_checkpoint:
+    kind: checkpoint
+    files:
+      - local: checkpoints/flowr/spindr/flowr.ckpt
+
+  flowr_spindr_data:
+    kind: dataset
+    files:
+      - local: data/flowr/spindr/test.smol
+      - local: data/flowr/spindr/train.smol
+      - local: data/flowr/spindr/val.smol
+
+  flowr_root_checkpoint:
+    kind: checkpoint
+    files:
+      - local: checkpoints/flowr_root/flowr_root_v2.1.ckpt
+
+  flowr_root_crossdocked_data:
+    kind: dataset
+    files:
+      - local: data/flowr_root/crossdocked/test.smol

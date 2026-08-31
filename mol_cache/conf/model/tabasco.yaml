@@ -1,0 +1,10 @@
+# @package _global_
+route:
+  model: tabasco
+  dataset: geom
+
+model:
+  _target_: tabasco.mol_cache_sampler.TabascoModel
+  dataset: geom
+  num_steps: ${sampling.num_steps}
+  max_batch_size: ${sampling.max_batch_size}

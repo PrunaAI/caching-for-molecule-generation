@@ -1,0 +1,47 @@
+# @package _global_
+route:
+  model: flowr_root
+  dataset: spindr
+
+model:
+  _target_: flowr_root_model.gen.mol_cache_sampler.FlowrRootModel
+  dataset: ${route.dataset}
+  arch: pocket
+  pocket_noise: fix
+  pocket_coord_noise_std: 0.0
+  integration_steps: ${sampling.integration_steps}
+  ode_sampling_strategy: linear
+  solver: euler
+  categorical_strategy: uniform-sample
+  coord_noise_scale: 0.0
+  cat_sampling_noise_level: 1
+  bucket_cost_scale: quadratic
+  corrector_iters: 0
+  max_sample_iter: 20
+  sample_mol_sizes: true
+  filter_valid_unique: false
+  batch_cost: 100
+  max_systems: ${sampling.max_systems}
+  dataset_split: ${sampling.dataset_split}
+  use_sde_simulation: false
+  use_cosine_scheduler: false
+  lora_finetuned: false
+  anisotropic_prior: false
+  core_growing: false
+  pocket_type: holo
+  interaction_conditional: false
+  scaffold_hopping: false
+  scaffold_elaboration: false
+  linker_inpainting: false
+  fragment_inpainting: false
+  fragment_growing: false
+  substructure_inpainting: false
+  substructure: null
+  graph_inpainting: null
+  max_fragment_cuts: 3
+  separate_pocket_interpolation: false
+  separate_interaction_interpolation: false
+  ligand_time: null
+  pocket_time: null
+  interaction_time: null
+  resampling_steps: null

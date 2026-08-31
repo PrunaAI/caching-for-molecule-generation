@@ -1,0 +1,58 @@
+# Local assets (downloaded)
+# Anchored to the repo root so vendored `<pkg>/data/` source packages stay tracked.
+/data/
+/checkpoints/
+assets/download/
+*.ckpt
+*.pt
+*.pth
+*.npy
+*.smol
+*.msgpack
+*.mdb
+*.lmdb
+*.tar
+*.tar.gz
+*.zip
+
+# Experiment outputs
+outputs/
+results/
+multirun/
+**/multirun/
+mol_sdfs/
+*.sdf
+*.pkl
+wandb/
+runs/
+
+# Python / packaging
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.env
+.envrc
+
+# Caches / IDE
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.cursor/
+
+# Nested git metadata must never be committed
+**/.git/
+
+# OS
+.DS_Store
+Thumbs.db
